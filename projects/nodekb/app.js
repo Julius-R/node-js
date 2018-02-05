@@ -112,6 +112,17 @@ app.post('/articles/edit/:id', (req, res) => {
     })
 })
 
+app.delete('/article/:id', (req, res) => {
+    let query = {_id:req.params.id}
+
+    Article.remove(query, function(err) {
+        if(err) {
+            console.log(err);
+        }
+        res.send('Success');
+    })
+})
+
 //start server
 app.listen(3000, () => {
     console.log('server started on port: 3000');
